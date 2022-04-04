@@ -1,29 +1,41 @@
 import React from "react";
 import './App.css';
-import Switcher from './components/Switcher'
+import Switcher from './components/Switcher';
+import sad from './components/sad.png';
+import smile from './components/smile.png';
+
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      bgc: 'smile'
+      mood: true,
+      moodText: 'smile',
     }
   }
 
 changeBgc = () => {
 this.setState({
-  bgc: this.state.bgc === 'smile' ? 'sad' : 'smile'
+  moodText: this.state.moodText === 'smile' ? 'sad' : 'smile',
+  mood: !this.state.mood
 })
 }
 
 render() {
-  const {bgc} = this.state
+  const {moodText, mood} = this.state;
+  const moodPic = mood ? smile : sad;
   return (
-    <div className={bgc}>
-      <Switcher bgColor={bgc} changeParentBackground={this.changeBgc}/>
+    <div className={moodText}>
+      <Switcher bgColor={moodText} changeParentBackground={this.changeBgc} moodText={moodText} moodPic={moodPic}/>
     </div>
   );
 }
 }
 
 export default App;
+
+
+/*
+Hometask: Создать еще одну компоненту, которая отобразит кружочек с зеленой границей и будет менять содержимое в зависимости от того, что отображает компонента Switcher
+
+*/
