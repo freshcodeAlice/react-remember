@@ -3,6 +3,8 @@ import './App.css';
 import Switcher from './components/Switcher';
 import sad from './components/sad.png';
 import smile from './components/smile.png';
+import SuccessModalWindow from './components/SuccessModalWindow';
+
 
 
 class App extends React.Component {
@@ -27,6 +29,7 @@ render() {
   return (
     <div className={moodText}>
       <Switcher bgColor={moodText} changeParentBackground={this.changeBgc} moodText={moodText} moodPic={moodPic}/>
+      <SuccessModalWindow />
     </div>
   );
 }
