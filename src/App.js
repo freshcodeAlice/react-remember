@@ -4,6 +4,7 @@ import Switcher from './components/Switcher';
 import sad from './components/sad.png';
 import smile from './components/smile.png';
 import SuccessModalWindow from './components/SuccessModalWindow';
+import Timer from './components/Timer';
 
 
 
@@ -13,6 +14,8 @@ class App extends React.Component {
     this.state = {
       mood: true,
       moodText: 'smile',
+
+      timerMount: true
     }
   }
 
@@ -22,16 +25,26 @@ this.setState({
   mood: !this.state.mood
 })
 }
+/*
+  <div className={moodText}>
+       <Switcher bgColor={moodText} changeParentBackground={this.changeBgc} moodText={moodText} moodPic={moodPic}/> 
+       <SuccessModalWindow />
+    </div> */
 
 render() {
   const {moodText, mood} = this.state;
   const moodPic = mood ? smile : sad;
-  return (
-    <div className={moodText}>
-      <Switcher bgColor={moodText} changeParentBackground={this.changeBgc} moodText={moodText} moodPic={moodPic}/>
-      <SuccessModalWindow />
-    </div>
-  );
+
+
+  if (this.state.timerMount) {
+    return   (<>
+    <button onClick={()=>{this.setState({timerMount: !this.state.timerMount})}}> Mount Timer </button>
+    <Timer />
+    </>
+    )
+  } else {
+    return <button onClick={()=>{this.setState({timerMount: !this.state.timerMount})}}> Mount Timer </button>
+  }
 }
 }
 
