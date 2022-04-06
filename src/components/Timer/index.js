@@ -5,7 +5,7 @@ class Timer extends React.Component {
         super(props);
         console.log('constructor');
         this.state = {
-            count: 0
+            count: new Date(0,0,0,0)
         }
 
         this.timerId = null;
@@ -35,11 +35,11 @@ class Timer extends React.Component {
     }
 
     start = () => {
-
+        const {count} = this.state;
        this.timerId = setInterval(()=>{
-            console.log('interval');
+            const newDate = new Date(count.setSeconds(count.getSeconds()+1));
             this.setState({
-                count: this.state.count + 1
+                count: newDate
             })
         }, 1000);
 
@@ -47,10 +47,11 @@ class Timer extends React.Component {
 
     render(){
         console.log('render');
+        const {count} = this.state
 
         return (
             <>
-            <h1>{this.state.count}</h1>
+            <h1>{count.toLocaleTimeString()}</h1>
             <button onClick={this.start}>Start</button>
             </>
         )
