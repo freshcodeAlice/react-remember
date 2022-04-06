@@ -64,6 +64,8 @@ class Timer extends React.Component {
         });
     }
 
+
+
     render(){
         console.log('render');
         const {count} = this.state

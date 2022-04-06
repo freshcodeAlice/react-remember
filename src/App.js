@@ -5,6 +5,7 @@ import sad from './components/sad.png';
 import smile from './components/smile.png';
 import SuccessModalWindow from './components/SuccessModalWindow';
 import Timer from './components/Timer';
+import ModalWindow from "./components/ModalWindow";
 
 
 
@@ -39,7 +40,8 @@ render() {
   if (this.state.timerMount) {
     return   (<>
     <button onClick={()=>{this.setState({timerMount: !this.state.timerMount})}}> Mount Timer </button>
-    <Timer />
+    {/* <Timer /> */}
+    <ModalWindow />
     </>
     )
   } else {
