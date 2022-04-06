@@ -12,7 +12,8 @@ class Timer extends React.Component {
     }
 
     componentDidMount(){
-        console.log('componentDidMount')
+        console.log('componentDidMount');
+        this.start();
     }
 
     shouldComponentUpdate() {
@@ -36,21 +37,31 @@ class Timer extends React.Component {
 
     tick = () =>{
         const {count} = this.state;
-        const newDate = new Date(count.setSeconds(count.getSeconds()+1));
-        this.setState({
-            count: newDate
-        });
+        this.setState((state, props) => {
+            const {count} = state;
+            const newDate = new Date(count.setSeconds(count.getSeconds()+1));
+            return {count: newDate}
+        })
         this.timerId =  setTimeout(this.tick, 1000);
     }
 
     start = () => {
-        setTimeout(this.tick, 1000);
-
+        if(!this.timerId) {
+            this.tick();
+        }
     }
 
     stop = () => {
         console.log('stopped');
         clearTimeout(this.timerId);
+        this.timerId = null;
+    }
+
+    reset = () => {
+        this.stop();
+        this.setState({
+            count: new Date(0,0,0,0)
+        });
     }
 
     render(){
@@ -62,6 +73,7 @@ class Timer extends React.Component {
             <h1>{count.toLocaleTimeString()}</h1>
             <button onClick={this.start}>Start</button>
             <button onClick={this.stop}>Stop</button>
+            <button onClick={this.reset}>Reset</button>
             </>
         )
     }
