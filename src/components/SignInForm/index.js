@@ -32,21 +32,6 @@ class SignInForm extends React.Component {
     }
 
 
-//        const {name, value} = event.target;
-        // this.setState({
-        //    [event.target.name]:  event.target.value
-        // })
-
-    // {
-    //     test: 1
-    // }
-    // const test = 'hello';
-    // {
-    //     [test]: 5
-    // } ==== {
-    //     'hello': 5
-    // }
-
     handleSubmit = (event) => {
         event.preventDefault();
 console.dir(event.target);

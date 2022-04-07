@@ -8,6 +8,7 @@ import Timer from './components/Timer';
 import ModalWindow from "./components/ModalWindow";
 import Form from './components/Form';
 import SignInForm from './components/SignInForm';
+import CalculateForm from "./components/CalculateForm";
 
 
 
@@ -45,7 +46,8 @@ render() {
     {/* <Timer /> */}
     {/* <ModalWindow /> */}
     {/* <Form /> */}
-    <SignInForm />
+    {/* <SignInForm /> */}
+    <CalculateForm />
     </>
     )
   } else {
