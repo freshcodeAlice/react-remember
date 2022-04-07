@@ -7,7 +7,7 @@ class CalculateForm extends React.Component {
         this.state = {
            dollar: "",
            hrivna: "",
-           valuta: null
+           direction: 'dINh'
         }
         this.koefficient = 29.40;
     }
@@ -17,7 +17,6 @@ class CalculateForm extends React.Component {
         const {name, value} = event.target;
                 this.setState({
                     [name]: value,
-                    valuta: name
                 });
         }
 
@@ -27,13 +26,13 @@ class CalculateForm extends React.Component {
     }
 
     calculateMoney = () => {
-        const {dollar, hrivna, valuta} = this.state;
-        if(valuta === 'hrivna') {
+        const {dollar, hrivna, direction} = this.state;
+        if(direction === 'hINd') {
             const summaInDollars = Math.floor(hrivna / this.koefficient);
             this.setState({
                 dollar: summaInDollars
             });
-        } else if (valuta === 'dollar') {
+        } else if (direction === 'dINh') {
             const summaInHrivnas = Math.floor(dollar * this.koefficient);
             this.setState({
                 hrivna: summaInHrivnas
@@ -47,6 +46,10 @@ class CalculateForm extends React.Component {
             <form className="form-container" onSubmit={this.handleSubmit}>
                 <input type="text" value={this.state.dollar} name="dollar" onChange={this.handleInput} />
                 <input type="text" value={this.state.hrivna} name="hrivna"  onChange={this.handleInput}/>
+                <select value={this.state.direction} onChange={this.handleInput} name="direction">
+                    <option value='dINh'>Dollar in Hrivna</option>
+                    <option value='hINd'>Hrivna in Dollar</option>
+                </select>
                 <button type="submit">Convert</button>
                 <button type="reset">Clear</button>
             </form>
