@@ -7,6 +7,7 @@ import SuccessModalWindow from './components/SuccessModalWindow';
 import Timer from './components/Timer';
 import ModalWindow from "./components/ModalWindow";
 import Form from './components/Form';
+import SignInForm from './components/SignInForm';
 
 
 
@@ -43,7 +44,8 @@ render() {
     {/* <button onClick={()=>{this.setState({timerMount: !this.state.timerMount})}}> Mount Timer </button> */}
     {/* <Timer /> */}
     {/* <ModalWindow /> */}
-    <Form />
+    {/* <Form /> */}
+    <SignInForm />
     </>
     )
   } else {
